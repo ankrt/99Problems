@@ -4,7 +4,7 @@ import org.scalatest.FlatSpec
 
 abstract class ListProblemsSpec extends FlatSpec {
 
-  abstract def listProblems: ListProblems
+  def listProblems: ListProblems
 
   "ListProblems" should "find the last element of a list" in {
     val ls = List(1, 1, 2, 3, 5, 8)
@@ -21,7 +21,7 @@ abstract class ListProblemsSpec extends FlatSpec {
   it should "find the nth element of a list" in {
     val ls = List(1, 1, 2, 3, 5, 8)
     val answer = listProblems.nth(2, ls)
-    assert(answer == 2)
+    assert(answer.get == 2)
   }
 
   it should "find the length of a list" in {

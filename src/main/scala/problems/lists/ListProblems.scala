@@ -12,7 +12,7 @@ trait ListProblems {
 
   /** Find the nth element of a list
     */
-  def nth[A](n: Int, ls: List[A]): A
+  def nth[A](n: Int, ls: List[A]): Option[A]
 
   /** Find the number of elements of a list
     */
