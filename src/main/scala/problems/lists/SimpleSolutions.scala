@@ -1,29 +1,28 @@
 package problems.lists
 
-import scala.annotation.tailrec
-
 class SimpleSolutions extends ListProblems {
 
   def last[A](ls: List[A]): A = ls.last
 
   def penultimate[A](ls: List[A]): A = ls.init.last
 
-  def nth[A](n: Int, ls: List[A]): Option[A] = {
-    @tailrec def run(count: Int, remaining: List[A]): Option[A] = {
-      if (remaining.isEmpty) None
-      else {
-        if (count == n) Some(remaining.head)
-        else run(count + 1, remaining.tail)
-      }
-    }
-    run(0, ls)
+  def nth[A](n: Int, ls: List[A]): Option[A] = (n, ls) match {
+    case (_, Nil) => None
+    case (`n`, result :: _) => Some(result)
+    case (_, _ :: tail) => nth(n - 1, tail)
   }
 
-  def length[A](ls: List[A]): Int = ???
+  def length[A](ls: List[A]): Int = {
+    ls.foldLeft(0)((count, _) => count + 1)
+  }
 
-  def reverse[A](ls: List[A]): List[A] = ???
+  def reverse[A](ls: List[A]): List[A] = {
+    ls.foldLeft(List[A]())((result, next) => next :: result)
+  }
 
-  def isPalindrome[A](ls: List[A]): Boolean = ???
+  def isPalindrome[A](ls: List[A]): Boolean = {
+    ls.reverse == ls
+  }
 
   def flatten(ls: List[Any]): List[Any] = ???
 
