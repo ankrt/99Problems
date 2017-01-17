@@ -1,4 +1,4 @@
-package scala.problems.lists
+package problems.lists
 
 trait ListProblems {
 
@@ -12,7 +12,7 @@ trait ListProblems {
 
   /** Find the nth element of a list
     */
-  def nth[A](ls: List[A]): A
+  def nth[A](n: Int, ls: List[A]): A
 
   /** Find the number of elements of a list
     */
