@@ -78,22 +78,30 @@ abstract class ListProblemsSpec extends FlatSpec {
 
   // 11
   it should "modified run-length encoding" in {
-    ???
+    val ls = List('a, 'a, 'a, 'a, 'b, 'c, 'c, 'a, 'a, 'd, 'e, 'e, 'e, 'e)
+    val answer = listProblems.encodeModified(ls)
+    assert(answer == List((4,'a), 'b, (2,'c), (2,'a), 'd, (4,'e)))
   }
 
   // 12
   it should "decode a run-length encoded list" in {
-    ???
+    val ls = List((4, 'a), (1, 'b), (2, 'c), (2, 'a), (1, 'd), (4, 'e))
+    val answer = listProblems.decode(ls)
+    assert(answer == List('a, 'a, 'a, 'a, 'b, 'c, 'c, 'a, 'a, 'd, 'e, 'e, 'e, 'e))
   }
 
   // 13
   it should "run-length encode a list without using previous solutions" in {
-    ???
+    val ls = List('a, 'a, 'a, 'a, 'b, 'c, 'c, 'a, 'a, 'd, 'e, 'e, 'e, 'e)
+    val answer = listProblems.encodeDirect(ls)
+    assert(answer == List((4,'a), (1,'b), (2,'c), (2,'a), (1,'d), (4,'e)))
   }
 
   // 14
   it should "duplicate the elements of a list" in {
-    ???
+    val ls = List('a, 'b, 'c, 'c, 'd)
+    val answer = listProblems.duplicate(ls)
+    assert(answer == List('a, 'a, 'b, 'b, 'c, 'c, 'c, 'c, 'd, 'd))
   }
 
 }
