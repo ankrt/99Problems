@@ -79,16 +79,36 @@ class SimpleSolutions extends ListProblems {
     ls flatMap { List.fill(2)(_) }
   }
 
-  def duplicateN[A](n: Int, ls: List[A]): List[A] = ???
+  def duplicateN[A](n: Int, ls: List[A]): List[A] = {
+    ls flatMap { List.fill(n)(_) }
+  }
 
-  def drop[A](n: Int, ls: List[A]): List[A] = ???
+  def drop[A](n: Int, ls: List[A]): List[A] = {
+    ls zip (Stream from 1) filterNot { _._2 % n == 0 } map { _._1 }
+  }
 
-  def split[A](n: Int, ls: List[A]): (List[A], List[A]) = ???
+  def split[A](n: Int, ls: List[A]): (List[A], List[A]) = {
+    @tailrec def run(left: List[A], right: List[A]): (List[A], List[A]) = {
+      if (right.isEmpty || left.length == n) (left.reverse, right)
+      else run(right.head :: left, right.tail)
+    }
+    run(List.empty, ls)
+  }
 
-  def slice[A](i: Int, k: Int, ls: List[A]): List[A] = ???
+  def slice[A](i: Int, k: Int, ls: List[A]): List[A] = {
+    // not ideal
+    ls.zipWithIndex filter { el => el._2 >= i && el._2 < k } map { _._1 }
+  }
 
-  def rotate[A](n: Int, ls: List[A]): List[A] = ???
+  def rotate[A](n: Int, ls: List[A]): List[A] = {
+    val normalised = if (n < 0) ls.length - Math.abs(n) else n
+    val (left, right) = ls splitAt normalised
+    right ++ left
+  }
 
-  def removeAt[A](n: Int, ls: List[A]): (List[A], A) = ???
+  def removeAt[A](n: Int, ls: List[A]): (List[A], A) = {
+    val (left, excluded :: right) = ls splitAt n
+    (left ++ right, excluded)
+  }
 
 }
