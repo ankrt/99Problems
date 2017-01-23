@@ -52,4 +52,12 @@ class SimpleSolutions extends ListProblems {
   def encode[A](ls: List[A]): List[(Int, A)] = {
     pack(ls) map { el => (el.length, el.head) }
   }
+
+  def encodeModified[A](ls: List[A]): List[Either[(Int, A), A]] = ???
+
+  def decode[A](ls: List[(Int, A)]): List[A] = ???
+
+  def encodeDirect[A](ls: List[A]): List[(Int, A)] = ???
+
+  def duplicate[A](ls: List[A]): List[A] = ???
 }

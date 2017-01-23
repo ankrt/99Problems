@@ -40,5 +40,22 @@ trait ListProblems {
 
   /** 10 Run-length encoding of a list
     */
-  def encode[A](list: List[A]): List[(Int, A)]
+  def encode[A](ls: List[A]): List[(Int, A)]
+
+  /** 11 Modified run-length encoding
+    */
+  def encodeModified[A](ls: List[A]): List[Either[(Int, A), A]]
+
+  /** 12 Decode a run-length encoded list
+    */
+  def decode[A](ls: List[(Int, A)]): List[A]
+
+  /** 13 Run-length encoding of a list (direct solution)
+    */
+  def encodeDirect[A](ls: List[A]): List[(Int, A)]
+
+  /** 14 Duplicate the elements of a list
+    */
+  def duplicate[A](ls: List[A]): List[A]
+
 }
