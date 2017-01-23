@@ -1,5 +1,7 @@
 package problems.lists
 
+import scala.annotation.tailrec
+
 class SimpleSolutions extends ListProblems {
 
   def last[A](ls: List[A]): A = ls.last
@@ -24,11 +26,28 @@ class SimpleSolutions extends ListProblems {
     ls.reverse == ls
   }
 
-  def flatten(ls: List[Any]): List[Any] = ???
+  def flatten(ls: List[Any]): List[Any] = ls flatMap {
+    case e: List[_] => flatten(e)
+    case e => List(e)
+  }
 
-  def compress[A](ls: List[A]): List[A] = ???
+  def compress[A](ls: List[A]): List[A] = {
+    ls.reverse.foldLeft(List[A]()) { (r, n) =>
+      if (r.isEmpty || r.head != n) n :: r
+      else r
+    }
+  }
 
-  def pack[A](ls: List[A]): List[List[A]] = ???
+  def pack[A](ls: List[A]): List[List[A]] = {
+    @tailrec def run(result: List[List[A]], remaining: List[A]): List[List[A]] = {
+      if (remaining.isEmpty) result
+      else {
+        val (packed, next) = remaining.span(_ == remaining.head)
+        run(List(packed) ++ result, next)
+      }
+    }
+    run(List.empty, ls).reverse
+  }
 
   def encode[A](list: List[A]): List[(Int, A)] = ???
 }
