@@ -79,4 +79,16 @@ class SimpleSolutions extends ListProblems {
     ls flatMap { List.fill(2)(_) }
   }
 
+  def duplicateN[A](n: Int, ls: List[A]): List[A] = ???
+
+  def drop[A](n: Int, ls: List[A]): List[A] = ???
+
+  def split[A](n: Int, ls: List[A]): (List[A], List[A]) = ???
+
+  def slice[A](i: Int, k: Int, ls: List[A]): List[A] = ???
+
+  def rotate[A](n: Int, ls: List[A]): List[A] = ???
+
+  def removeAt[A](n: Int, ls: List[A]): (List[A], A) = ???
+
 }

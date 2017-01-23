@@ -58,4 +58,28 @@ trait ListProblems {
     */
   def duplicate[A](ls: List[A]): List[A]
 
+  /** 15 Duplicate the elements of a list N times
+    */
+  def duplicateN[A](n: Int, ls: List[A]): List[A]
+
+  /** 16 Drop every Nth element from a list
+    */
+  def drop[A](n: Int, ls: List[A]): List[A]
+
+  /** 17 Split a list into two parts
+    */
+  def split[A](n: Int, ls: List[A]): (List[A], List[A])
+
+  /** 18 Extract a slice from a list
+    */
+  def slice[A](i: Int, k: Int, ls: List[A]): List[A]
+
+  /** 19 Rotate a list N places to the left
+    */
+  def rotate[A](n: Int, ls: List[A]): List[A]
+
+  /** 20 Remove the Nth element from a list
+    */
+  def removeAt[A](n: Int, ls: List[A]): (List[A], A)
+
 }

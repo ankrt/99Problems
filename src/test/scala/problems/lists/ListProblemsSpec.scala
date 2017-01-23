@@ -104,4 +104,48 @@ abstract class ListProblemsSpec extends FlatSpec {
     assert(answer == List('a, 'a, 'b, 'b, 'c, 'c, 'c, 'c, 'd, 'd))
   }
 
+  // 15
+  it should "duplicate the elements of a list N times" in {
+    val ls = List('a, 'b, 'c, 'c, 'd)
+    val answer = listProblems.duplicateN(3, ls)
+    assert(answer == List('a, 'a, 'a, 'b, 'b, 'b, 'c, 'c, 'c, 'c, 'c, 'c, 'd, 'd, 'd))
+  }
+
+  // 16
+  it should "drop every Nth element from a list" in {
+    val ls = List('a, 'b, 'c, 'd, 'e, 'f, 'g, 'h, 'i, 'j, 'k)
+    val answer = listProblems.drop(3, ls)
+    assert(answer == List('a, 'b, 'd, 'e, 'g, 'h, 'j, 'k))
+  }
+
+  // 17
+  it should "split a list into two parts" in {
+    val ls = List('a, 'b, 'c, 'd, 'e, 'f, 'g, 'h, 'i, 'j, 'k)
+    val answer = listProblems.split(3, ls)
+    assert(answer == (List('a, 'b, 'c), List('d, 'e, 'f, 'g, 'h, 'i, 'j, 'k)))
+  }
+
+  // 18
+  it should "extract a slice from a list" in {
+    val ls = List('a, 'b, 'c, 'd, 'e, 'f, 'g, 'h, 'i, 'j, 'k)
+    val answer = listProblems.slice(3, 7, ls)
+    assert(answer == List('d, 'e, 'f, 'g))
+  }
+
+  // 19
+  it should "rotate a list N places to the left" in {
+    val ls = List('a, 'b, 'c, 'd, 'e, 'f, 'g, 'h, 'i, 'j, 'k)
+    val forwards = listProblems.rotate(3, ls)
+    val backwards = listProblems.rotate(-2, ls)
+    assert(forwards == List('d, 'e, 'f, 'g, 'h, 'i, 'j, 'k, 'a, 'b, 'c))
+    assert(backwards == List('j, 'k, 'a, 'b, 'c, 'd, 'e, 'f, 'g, 'h, 'i))
+  }
+
+  // 20
+  it should "remove the Nth element from a list" in {
+    val ls = List('a, 'b, 'c, 'd)
+    val answer = listProblems.removeAt(1, ls)
+    assert(answer == (List('a, 'c, 'd), 'b))
+  }
+
 }
