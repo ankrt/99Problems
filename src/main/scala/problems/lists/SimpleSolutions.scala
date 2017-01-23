@@ -10,8 +10,8 @@ class SimpleSolutions extends ListProblems {
 
   def nth[A](n: Int, ls: List[A]): Option[A] = (n, ls) match {
     case (_, Nil) => None
-    case (`n`, result :: _) => Some(result)
-    case (_, _ :: tail) => nth(n - 1, tail)
+    case (0, head :: _) => Some(head)
+    case (n, _ :: tail) => nth(n - 1, tail)
   }
 
   def length[A](ls: List[A]): Int = {
@@ -49,5 +49,7 @@ class SimpleSolutions extends ListProblems {
     run(List.empty, ls).reverse
   }
 
-  def encode[A](list: List[A]): List[(Int, A)] = ???
+  def encode[A](ls: List[A]): List[(Int, A)] = {
+    pack(ls) map { el => (el.length, el.head) }
+  }
 }
