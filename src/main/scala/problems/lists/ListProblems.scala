@@ -82,4 +82,24 @@ trait ListProblems {
     */
   def removeAt[A](n: Int, ls: List[A]): (List[A], A)
 
+  /** 21 Insert an element at a given position into a list
+    */
+  def insertAt[A](that: A, n: Int, ls: List[A]): List[A]
+
+  /** 22 Create a list containing all integers within a given range
+    */
+  def range(from: Int, to: Int): List[Int]
+
+  /** 23 Extract a given number of randomly selected elements from a list
+    */
+  def randomSelect[A](n: Int, ls: List[A]): List[Int]
+
+  /** 24 Lotto: Draw N different random numbers from the set 1..M
+    */
+  def lotto(n: Int, m: Int): List[Int]
+
+  /** 25 Generate a random permutation of the elements of a list
+    */
+  def lotto[A](ls: List[A]): List[A]
+
 }

@@ -11,7 +11,7 @@ class SimpleSolutions extends ListProblems {
   def nth[A](n: Int, ls: List[A]): Option[A] = (n, ls) match {
     case (_, Nil) => None
     case (0, head :: _) => Some(head)
-    case (n, _ :: tail) => nth(n - 1, tail)
+    case (`n`, _ :: tail) => nth(n - 1, tail)
   }
 
   def length[A](ls: List[A]): Int = {
@@ -111,4 +111,13 @@ class SimpleSolutions extends ListProblems {
     (left ++ right, excluded)
   }
 
+  def insertAt[A](that: A, n: Int, ls: List[A]): List[A] = ???
+
+  def range(from: Int, to: Int): List[Int] = ???
+
+  def randomSelect[A](n: Int, ls: List[A]): List[Int] = ???
+
+  def lotto(n: Int, m: Int): List[Int] = ???
+
+  def lotto[A](ls: List[A]): List[A] = ???
 }
