@@ -53,11 +53,30 @@ class SimpleSolutions extends ListProblems {
     pack(ls) map { el => (el.length, el.head) }
   }
 
-  def encodeModified[A](ls: List[A]): List[Either[(Int, A), A]] = ???
+  def encodeModified[A](ls: List[A]): List[Either[(Int, A), A]] = {
+    pack(ls) map { el =>
+      if (el.length == 1) Right(el.head)
+      else Left((el.length, el.head))
+    }
+  }
 
-  def decode[A](ls: List[(Int, A)]): List[A] = ???
+  def decode[A](ls: List[(Int, A)]): List[A] = {
+    ls flatMap { el => List.fill(el._1)(el._2) }
+  }
 
-  def encodeDirect[A](ls: List[A]): List[(Int, A)] = ???
+  def encodeDirect[A](ls: List[A]): List[(Int, A)] = {
+    @tailrec def run(result: List[(Int, A)], remaining: List[A]): List[(Int, A)] = {
+      if (remaining.isEmpty) result
+      else {
+        val (packed, next) = remaining.span(_ == remaining.head)
+        run((packed.length, packed.head) :: result, next)
+      }
+    }
+    run(List.empty, ls).reverse
+  }
 
-  def duplicate[A](ls: List[A]): List[A] = ???
+  def duplicate[A](ls: List[A]): List[A] = {
+    ls flatMap { List.fill(2)(_) }
+  }
+
 }

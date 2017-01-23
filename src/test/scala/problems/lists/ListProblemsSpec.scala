@@ -80,7 +80,7 @@ abstract class ListProblemsSpec extends FlatSpec {
   it should "modified run-length encoding" in {
     val ls = List('a, 'a, 'a, 'a, 'b, 'c, 'c, 'a, 'a, 'd, 'e, 'e, 'e, 'e)
     val answer = listProblems.encodeModified(ls)
-    assert(answer == List((4,'a), 'b, (2,'c), (2,'a), 'd, (4,'e)))
+    assert(answer == List(Left((4,'a)), Right('b), Left((2,'c)), Left((2,'a)), Right('d), Left((4,'e))))
   }
 
   // 12
