@@ -9,6 +9,7 @@ class SimpleSolutions extends ListProblems {
   def penultimate[A](ls: List[A]): A = ls.init.last
 
   def nth[A](n: Int, ls: List[A]): Option[A] = (n, ls) match {
+    // TODO: warning may not be exhaustive?
     case (_, Nil) => None
     case (0, head :: _) => Some(head)
     case (`n`, _ :: tail) => nth(n - 1, tail)
@@ -111,13 +112,23 @@ class SimpleSolutions extends ListProblems {
     (left ++ right, excluded)
   }
 
-  def insertAt[A](that: A, n: Int, ls: List[A]): List[A] = ???
+  def insertAt[A](that: A, n: Int, ls: List[A]): List[A] = {
+    val (left, right) = ls splitAt n
+    left ::: that :: right
+  }
 
-  def range(from: Int, to: Int): List[Int] = ???
+  def range(start: Int, end: Int): List[Int] = {
+    require(end > start)
+    @tailrec def run(c: Int, result: List[Int]): List[Int] = {
+      if (c < start) result
+      else run(c - 1, c :: result)
+    }
+    run(end, List.empty)
+  }
 
   def randomSelect[A](n: Int, ls: List[A]): List[Int] = ???
 
   def lotto(n: Int, m: Int): List[Int] = ???
 
-  def lotto[A](ls: List[A]): List[A] = ???
+  def randomPermute[A](ls: List[A]): List[A] = ???
 }
