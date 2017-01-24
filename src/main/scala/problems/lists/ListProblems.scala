@@ -100,6 +100,6 @@ trait ListProblems {
 
   /** 25 Generate a random permutation of the elements of a list
     */
-  def lotto[A](ls: List[A]): List[A]
+  def randomPermute[A](ls: List[A]): List[A]
 
 }

@@ -148,4 +148,40 @@ abstract class ListProblemsSpec extends FlatSpec {
     assert(answer == (List('a, 'c, 'd), 'b))
   }
 
+  // 21
+  it should "insert an element at a given position into a list" in {
+    val ls = List('a, 'b, 'c, 'd)
+    val answer = listProblems.insertAt('new, 1, ls)
+    assert(answer == List('a, 'new, 'b, 'c, 'd))
+  }
+
+  // 22
+  it should "create a list containing all integers within a given range" in {
+    val answer = listProblems.range(4, 9)
+    assert(answer == List(4, 5, 6, 7, 8, 9))
+  }
+
+  // 23
+  it should "extract a given number of randomly selected elements from a list" in {
+    // we can only really test the length of the answer here
+    val ls = List('a, 'b, 'c, 'd, 'f, 'g, 'h)
+    val answer = listProblems.randomSelect(3, ls)
+    assert(answer.length == 3)
+  }
+
+  // 24
+  it should "draw N different random numbers from the set 1..M" in {
+    val answer = listProblems.lotto(6, 49)
+    assert(answer.length == 6)
+    assert(answer forall { _ <= 49 })
+  }
+
+  // 25
+  it should "generate a random permutation of the elements of a list" in {
+    val ls = List('a, 'b, 'c, 'd, 'e, 'f)
+    val answer = listProblems.randomPermute(ls)
+    assert(answer.length == ls.length)
+    assert(answer.sorted == ls.sorted)
+  }
+
 }
