@@ -8,11 +8,16 @@ class SimpleSolutions extends ListProblems {
 
   def penultimate[A](ls: List[A]): A = ls.init.last
 
-  def nth[A](n: Int, ls: List[A]): Option[A] = (n, ls) match {
-    // TODO: warning may not be exhaustive?
-    case (_, Nil) => None
-    case (0, head :: _) => Some(head)
-    case (`n`, _ :: tail) => nth(n - 1, tail)
+  def nth[A](n: Int, ls: List[A]): Option[A] = {
+    val normN = if (n < 0) ls.length - Math.abs(n) else n
+    @tailrec def run(accumulated: List[A], remaining: List[A]): Option[A] = {
+      if (remaining.isEmpty) None
+      else {
+        if (accumulated.length >= normN) Some(remaining.head)
+        else run(remaining.head :: accumulated, remaining.tail)
+      }
+    }
+    run(List.empty, ls)
   }
 
   def length[A](ls: List[A]): Int = {
@@ -126,9 +131,25 @@ class SimpleSolutions extends ListProblems {
     run(end, List.empty)
   }
 
-  def randomSelect[A](n: Int, ls: List[A]): List[Int] = ???
+  def randomSelect[A](n: Int, ls: List[A]): List[A] = {
+    val rand = util.Random
+    @tailrec def run(result: List[A], remaining: List[A]): List[A] = {
+      if (result.length == n) result
+      else {
+        val (next, selected) = removeAt(rand.nextInt(remaining.length), remaining)
+        run(selected :: result, next)
+      }
+    }
+    run(List.empty, ls)
+  }
 
-  def lotto(n: Int, m: Int): List[Int] = ???
+  def lotto(n: Int, m: Int): List[Int] = {
+    randomSelect(n, List.range(1, m + 1))
+  }
 
-  def randomPermute[A](ls: List[A]): List[A] = ???
+  def randomPermute[A](ls: List[A]): List[A] = {
+    // let's be lazy
+    randomSelect(ls.length, ls)
+  }
+
 }

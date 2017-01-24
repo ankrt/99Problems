@@ -92,7 +92,7 @@ trait ListProblems {
 
   /** 23 Extract a given number of randomly selected elements from a list
     */
-  def randomSelect[A](n: Int, ls: List[A]): List[Int]
+  def randomSelect[A](n: Int, ls: List[A]): List[A]
 
   /** 24 Lotto: Draw N different random numbers from the set 1..M
     */
