@@ -202,4 +202,44 @@ trait ListProblems {
     randomSelect(ls.length, ls)
   }
 
+  /** 26 Find distinct combinations of the elements of a list
+    *
+    * Example: how many ways can a committee of 3 be chosen from a group of 12
+    * people?
+    *
+    * @param k the size of the combinations
+    * @param items from which combinations are generated
+    * @return the list of possible combinations of size k
+    */
+  def combinations[A](k: Int, items: List[A]): List[List[A]] = {
+    ???
+  }
+
+  /** 27 Group the elements of a set into disjoint subsets
+    *
+    * Example: how many ways can a group of 9 people work in 3 disjoint
+    * subgroups of 2, 3 and 4 persons?
+    *
+    * @param sizes the sizes of the disjoint subsets
+    * @param items the items to divide into the subsets
+    * @return a list of the combinations of items
+    */
+  def group[A](sizes: List[Int], items: List[A]): List[List[List[A]]] = {
+    ???
+  }
+
+  /** 28 Sort a list of lists according to length of sublists
+    *
+    * (a) sort according to length, shortest first
+    * (b) sort according to length frequency
+    *
+    * This is a solution to part (a).
+    *
+    * @param items to be sorted
+    * @return the sorted list of items
+    */
+  def lsort[A](items: List[List[A]]): List[List[A]] = {
+    ???
+  }
+
 }
