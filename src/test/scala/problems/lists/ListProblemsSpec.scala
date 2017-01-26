@@ -188,4 +188,34 @@ abstract class ListProblemsSpec extends FlatSpec {
     // assert(answer.sorted == ls.sorted)
   }
 
+  // 26
+  it should "generate distinct combinations of elements in a list" in {
+    // we will just check the length of the output is the same as the value of
+    // the binomial coefficient: n! / k!(n - k)!
+    val ls = List('a, 'b, 'c, 'd, 'e, 'f)
+    val n = ls.length
+    val k = 3
+    val expectedSize = fact(n) / (fact(k) * fact(n - k))
+    val answer = listProblems.combinations(k, ls)
+    println(answer)
+    assert(expectedSize == answer.length)
+  }
+
+  // 27
+  it should "group the elements of a set into disjoint subsets" in {
+    // no idea how to test this
+    ???
+  }
+
+  // 28
+  it should "sort a list of lists according to the length of sublists" in {
+    val ls = List(List('a, 'b, 'c), List('d, 'e), List('f, 'g, 'h), List('d, 'e), List('i, 'j, 'k, 'l), List('m, 'n), List('o))
+    val answer = listProblems.lsort(ls)
+    assert(answer == List(List('o), List('d, 'e), List('d, 'e), List('m, 'n), List('a, 'b, 'c), List('f, 'g, 'h), List('i, 'j, 'k, 'l)))
+  }
+
+  private def fact(n: Int): Int = {
+    Stream.range(1, n).product
+  }
+
 }

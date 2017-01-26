@@ -239,7 +239,7 @@ trait ListProblems {
     * @return the sorted list of items
     */
   def lsort[A](items: List[List[A]]): List[List[A]] = {
-    ???
+    items sortWith { _.length < _.length }
   }
 
 }
