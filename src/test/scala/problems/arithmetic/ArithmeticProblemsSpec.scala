@@ -29,4 +29,27 @@ class ArithmeticProblemsSpec extends FlatSpec {
     assert(answer == List(3, 3, 5, 7))
   }
 
+  "Problem 36" should "caclulate the prime factors of a number and their multiplicity" in {
+    val answer = 315.primeFactorsMultiplicity
+    assert(answer == List((3,2), (5,1), (7,1)))
+  }
+
+  "Problem 37" should "improve the method of calculating the totient" in {
+    assert(10.totientImproved == 4)
+  }
+
+  "Problem 38" should "compare the two totient implementations" in {
+    ???
+  }
+
+  "Problem 39" should "find the list of prime numbers in a given range" in {
+    val answer = S99Int.listPrimesInRange(7 to 31)
+    assert(answer == List(7, 11, 13, 17, 19, 23, 29, 31))
+  }
+
+  "Problem 40" should "find the two primes that sum to an event integer" in {
+    val answer = 28.goldbach
+    assert(answer == (5, 23))
+  }
+
 }

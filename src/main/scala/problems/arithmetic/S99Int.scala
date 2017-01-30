@@ -27,6 +27,15 @@ class S99Int(val start: Int) extends ArithmeticProblems {
       .flatMap { count(List.empty, start, _) }
       .toList
   }
+
+  def primeFactorsMultiplicity: List[(Int, Int)] = ???
+
+  def totientImproved: Int = ???
+
+  def totientCompare(): Unit = ???
+
+  def goldbach: (Int, Int) = ???
+
 }
 
 object S99Int extends ArithmeticCompanion {
@@ -44,5 +53,7 @@ object S99Int extends ArithmeticCompanion {
     case (result, 0) => result
     case (m, n) => gcd(n, m % n)
   }
+
+  def listPrimesInRange(range: Range): List[Int] = ???
 
 }

@@ -32,6 +32,37 @@ trait ArithmeticProblems {
     */
   def primeFactors: List[Int]
 
+  /** 36 Determine the prime factors of a given positive integer (2)
+    *
+    * @return the list of prime factors and their multiplicities
+    */
+  def primeFactorsMultiplicity: List[(Int, Int)]
+
+  /** 37 Totient Improved
+    *
+    * The output of problem 36 can be used to calculate the totient more
+    * efficiently.
+    *
+    * @return the totient
+    */
+  def totientImproved: Int
+
+  /** 38 Compare the two methods of calculating Euler's totient function
+    *
+    */
+  def totientCompare(): Unit
+
+  /** 40 Goldbach's conjecture
+    *
+    * Goldbach's conjecture says that every positive even number greater than 2
+    * is the sum of two prime numbers. This function finds the two prime
+    * numbers that sum up to a given even integer.
+    *
+    * @return the pair of integers that sum to this integer
+    */
+  def goldbach: (Int, Int)
+
+
 }
 
 trait ArithmeticCompanion {
@@ -43,5 +74,11 @@ trait ArithmeticCompanion {
     * @return the value of the greatest common divisor
     */
   def gcd(a: Int, b: Int): Int
+
+  /** 39 List primes in a given range
+    *
+    * @return the list of primes in the range
+    */
+  def listPrimesInRange(range: Range): List[Int]
 
 }
