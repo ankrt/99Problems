@@ -28,7 +28,17 @@ class S99Int(val start: Int) extends ArithmeticProblems {
       .toList
   }
 
-  def primeFactorsMultiplicity: List[(Int, Int)] = ???
+  def primeFactorsMultiplicity: Map[Int, Int] = {
+    @tailrec def run(result: Map[Int, Int], remaining: List[Int]): Map[Int, Int] = {
+      if (remaining.isEmpty) result
+      else {
+        val current = remaining.head
+        val count = if (result contains current) result(current) + 1 else 1
+        run(result + (current -> count), remaining.tail)
+      }
+    }
+    run(Map.empty, start.primeFactors)
+  }
 
   def totientImproved: Int = ???
 

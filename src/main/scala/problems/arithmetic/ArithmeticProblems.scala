@@ -36,7 +36,7 @@ trait ArithmeticProblems {
     *
     * @return the list of prime factors and their multiplicities
     */
-  def primeFactorsMultiplicity: List[(Int, Int)]
+  def primeFactorsMultiplicity: Map[Int, Int]
 
   /** 37 Totient Improved
     *

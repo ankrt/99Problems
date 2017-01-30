@@ -31,7 +31,8 @@ class ArithmeticProblemsSpec extends FlatSpec {
 
   "Problem 36" should "caclulate the prime factors of a number and their multiplicity" in {
     val answer = 315.primeFactorsMultiplicity
-    assert(answer == List((3,2), (5,1), (7,1)))
+    println(answer)
+    assert(answer == Map(3 -> 2, 5 -> 1, 7 -> 1))
   }
 
   "Problem 37" should "improve the method of calculating the totient" in {
