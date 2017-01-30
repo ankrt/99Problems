@@ -10,6 +10,8 @@ trait ArithmeticProblems {
 
   /** 33 Test whether this number is coprime to that number
     *
+    * Two numbers are coprime if their greatest common divisor is 1
+    *
     * @param that number to compare against
     * @return true if the two numbers are coprime, else false
     */
