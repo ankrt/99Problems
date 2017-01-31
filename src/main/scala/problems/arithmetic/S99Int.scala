@@ -22,8 +22,7 @@ class S99Int(val start: Int) extends ArithmeticProblems {
       if (n % p == 0) count(p :: result, n / p, p)
       else result
     }
-    primes.takeWhile { p => p < Math.sqrt(start) }
-      .filter { p => p * p < start}
+    primes.takeWhile { _ <= start }
       .flatMap { count(List.empty, start, _) }
       .toList
   }
@@ -44,7 +43,15 @@ class S99Int(val start: Int) extends ArithmeticProblems {
 
   def totientCompare(): Unit = ???
 
-  def goldbach: (Int, Int) = ???
+  def goldbach: (Int, Int) = {
+    @tailrec def run(current: Int, remaining: Stream[Int]): (Int, Int) = {
+      val result = remaining filter { _ + current == start }
+      if (result.nonEmpty) (current, result.head)
+      else run(remaining.head, remaining.tail)
+    }
+    val candidates = primes takeWhile { _ < start }
+    run(candidates.head, candidates.tail)
+  }
 
 }
 
@@ -64,6 +71,8 @@ object S99Int extends ArithmeticCompanion {
     case (m, n) => gcd(n, m % n)
   }
 
-  def listPrimesInRange(range: Range): List[Int] = ???
+  def listPrimesInRange(range: Range): List[Int] = {
+    (primes dropWhile { _ < range.start } takeWhile { _ < range.end }).toList
+  }
 
 }

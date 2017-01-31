@@ -25,13 +25,12 @@ class ArithmeticProblemsSpec extends FlatSpec {
   }
 
   "Problem 35" should "calculate the prime factors of a number" in {
-    val answer = 315.primeFactors
-    assert(answer == List(3, 3, 5, 7))
+    assert(10.primeFactors == List(2, 5))
+    assert(315.primeFactors == List(3, 3, 5, 7))
   }
 
   "Problem 36" should "caclulate the prime factors of a number and their multiplicity" in {
     val answer = 315.primeFactorsMultiplicity
-    println(answer)
     assert(answer == Map(3 -> 2, 5 -> 1, 7 -> 1))
   }
 
@@ -48,9 +47,10 @@ class ArithmeticProblemsSpec extends FlatSpec {
     assert(answer == List(7, 11, 13, 17, 19, 23, 29, 31))
   }
 
-  "Problem 40" should "find the two primes that sum to an event integer" in {
-    val answer = 28.goldbach
-    assert(answer == (5, 23))
+  "Problem 40" should "find the two primes that sum to an even integer" in {
+    assert(10.goldbach == (3, 7))
+    assert(12.goldbach == (5, 7))
+    assert(28.goldbach == (5, 23))
   }
 
 }
