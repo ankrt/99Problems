@@ -38,9 +38,7 @@ class ArithmeticProblemsSpec extends FlatSpec {
     assert(10.totientImproved == 4)
   }
 
-  "Problem 38" should "compare the two totient implementations" in {
-    ???
-  }
+  // Problem 38 has no test
 
   "Problem 39" should "find the list of prime numbers in a given range" in {
     val answer = S99Int.listPrimesInRange(7 to 31)

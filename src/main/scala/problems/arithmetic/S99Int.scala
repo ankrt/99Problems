@@ -1,5 +1,7 @@
 package problems.arithmetic
 
+import problems.util.Stopwatch
+
 import scala.annotation.tailrec
 
 class S99Int(val start: Int) extends ArithmeticProblems {
@@ -39,9 +41,13 @@ class S99Int(val start: Int) extends ArithmeticProblems {
     run(Map.empty, start.primeFactors)
   }
 
-  def totientImproved: Int = ???
-
-  def totientCompare(): Unit = ???
+  def totientImproved: Int = {
+    start.primeFactorsMultiplicity.foldLeft(1) { (tot, entry) =>
+      entry match {
+        case (pf, m) => tot * (pf - 1) * Math.pow(pf, m - 1).toInt
+      }
+    }
+  }
 
   def goldbach: (Int, Int) = {
     @tailrec def run(current: Int, remaining: Stream[Int]): (Int, Int) = {
@@ -71,8 +77,16 @@ object S99Int extends ArithmeticCompanion {
     case (m, n) => gcd(n, m % n)
   }
 
+  def totientCompare: (Long, Long) = {
+    def hopefullySlower() = 1 to 10000 foreach { _.totient }
+    def hopefullyFaster() = 1 to 10000 foreach { _.totientImproved }
+
+    (Stopwatch.time(hopefullySlower()).elapsed
+      , Stopwatch.time(hopefullyFaster()).elapsed)
+  }
+
   def listPrimesInRange(range: Range): List[Int] = {
-    (primes dropWhile { _ < range.start } takeWhile { _ < range.end }).toList
+    (primes dropWhile { _ < range.start } takeWhile { _ <= range.end }).toList
   }
 
 }

@@ -41,16 +41,18 @@ trait ArithmeticProblems {
   /** 37 Totient Improved
     *
     * The output of problem 36 can be used to calculate the totient more
-    * efficiently.
+    * efficiently. Let \[\[p_1, m_1], [p_2, m_2], [p_3, m_3], ...] be the list of
+    * prime factors (and their multiplicities of a given number. The following
+    * formula can be used to calculate the totient.
+    *
+    * phi(m) = (p_1-1) * p_1 exp (m_1-1)
+    *           * (p_2-1)* p_2 exp (m_2-1)
+    *           * (p_3-1)* p_3 exp (m_3-1)
+    *           * ...
     *
     * @return the totient
     */
   def totientImproved: Int
-
-  /** 38 Compare the two methods of calculating Euler's totient function
-    *
-    */
-  def totientCompare(): Unit
 
   /** 40 Goldbach's conjecture
     *
@@ -74,6 +76,12 @@ trait ArithmeticCompanion {
     * @return the value of the greatest common divisor
     */
   def gcd(a: Int, b: Int): Int
+
+  /** 38 Compare the two methods of calculating Euler's totient function
+    *
+    * @return a tuple of the elapsed time (ns) of the first and second methods
+    */
+  def totientCompare: (Long, Long)
 
   /** 39 List primes in a given range
     *
