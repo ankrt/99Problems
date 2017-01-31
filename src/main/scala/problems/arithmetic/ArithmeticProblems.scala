@@ -89,4 +89,10 @@ trait ArithmeticCompanion {
     */
   def listPrimesInRange(range: Range): List[Int]
 
+  /** 41 A list of Goldbach compositions
+    *
+    * @param range print compositions in this range
+    */
+  def printGoldbachList(range: Range): Unit
+
 }

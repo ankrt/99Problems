@@ -86,7 +86,19 @@ object S99Int extends ArithmeticCompanion {
   }
 
   def listPrimesInRange(range: Range): List[Int] = {
-    (primes dropWhile { _ < range.start } takeWhile { _ <= range.end }).toList
+    (primes dropWhile {
+      _ < range.start
+    } takeWhile {
+      _ <= range.end
+    }).toList
+  }
+
+  def printGoldbachList(range: Range): Unit = {
+    def format(n: Int): Unit = {
+      val g = n.goldbach
+      println(s"$n = ${g._1} + ${g._2}")
+    }
+    range filter { _ % 2 == 0 } foreach { format }
   }
 
 }

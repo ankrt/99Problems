@@ -51,4 +51,6 @@ class ArithmeticProblemsSpec extends FlatSpec {
     assert(28.goldbach == (5, 23))
   }
 
+  // Problem 41 has no test
+
 }
