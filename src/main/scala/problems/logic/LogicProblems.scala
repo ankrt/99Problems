@@ -78,4 +78,16 @@ trait LogicalExpressions {
     */
   def equ(a: Boolean, b: Boolean): Boolean = or(and(a, b), and(not(a), not(b)))
 
+  /** Print a truth table for a given expression
+    *
+    * @param f logical expression
+    */
+  def table2(f: (Boolean, Boolean) => Boolean): Unit = {
+    println("A\t B\t Result")
+    for (i <- List(true, false);
+        j <- List(true, false)) {
+      print(s"$i\t $j\t ${f(i, j)}\n")
+    }
+  }
+
 }
