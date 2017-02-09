@@ -1,5 +1,7 @@
 package problems.logic
 
+import scala.annotation.tailrec
+
 class S99Logic(a: Boolean) {
   import S99Logic._
 
@@ -43,5 +45,15 @@ object S99Logic {
     }
   }
 
+  def gray(n: Int): List[String] = {
+    @tailrec def build(count: Int, code: List[String]): List[String] = {
+      if (count > n) code
+      else {
+        val nextCode = (code map { 0 + _ }) ++ (code.reverse map { 1 + _ })
+        build(count + 1, nextCode)
+      }
+    }
+    build(1, List(""))
+  }
 
 }
