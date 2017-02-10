@@ -56,4 +56,6 @@ object S99Logic {
     build(1, List(""))
   }
 
+  // TODO: Problem 50 - Huffman code. Looks difficult.
+
 }
