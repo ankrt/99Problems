@@ -1,21 +1,29 @@
 package problems.trees
 
 sealed abstract class Tree[+T] {
+
   def isMirrorOf[V](that: Tree[V]): Boolean
   def isSymmetric: Boolean
+
 }
 
 case object End extends Tree[Nothing] {
+
   def isMirrorOf[V](that: Tree[V]): Boolean = that == End
   def isSymmetric: Boolean = true
 
   override def toString: String = "."
+
 }
 
 case class Node[+T](value: T, left: Tree[T], right: Tree[T]) extends Tree[T] {
 
-  def isMirrorOf[V](that: Tree[V]): Boolean = ???
-  def isSymmetric: Boolean = ???
+  def isMirrorOf[V](that: Tree[V]): Boolean = that match {
+    case t: Node[V] => left.isMirrorOf(t.right) && right.isMirrorOf(t.left)
+    case _ => false
+  }
+
+  def isSymmetric: Boolean = left.isMirrorOf(right)
 
   override def toString: String = {
     "T(" + value.toString + " " + left.toString + " " + right.toString + ")"
