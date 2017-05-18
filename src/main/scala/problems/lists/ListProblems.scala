@@ -212,7 +212,35 @@ trait ListProblems {
     * @return the list of possible combinations of size k
     */
   def combinations[A](k: Int, items: List[A]): List[List[A]] = {
-    ???
+
+    // a map of item -> subsequent items
+    lazy val listMap = createListMap(remaining = items)
+
+    @tailrec
+    def createListMap(result: Map[A, List[A]] = Map.empty, remaining: List[A]): Map[A, List[A]] =
+      remaining match {
+        case Nil => result
+        case _ => createListMap(result + (remaining.head -> remaining.tail), remaining.tail)
+      }
+
+    /** Pair up a given element with each member of a list, where members may
+     *  themselves be lists. For example,
+     *
+     * {{{
+     * pairUp('b, List('c, 'd))                     // List(List('b, 'c), List('b, 'd))
+     * pairUp('a, List(List('b, 'c), List('b, 'd))) // List(List('a, 'b, 'c), List('a, 'b, 'd))
+     * }}}
+     */
+    def pairUp(element: A, pairWith: Either[List[A], List[List[A]]]): List[List[A]] = pairWith match {
+      case Left(pw) => pw map { List(element, _) }
+      case Right(pw) => pw map { element :: _ }
+    }
+
+    def findCombinations(n: Int, result: List[List[A]], remaining: List[A]): List[List[A]] = {
+      ???
+    }
+
+    findCombinations(k, List.empty, items)
   }
 
   /** 27 Group the elements of a set into disjoint subsets
